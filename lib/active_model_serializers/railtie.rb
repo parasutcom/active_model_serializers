@@ -9,11 +9,11 @@ module ActiveModelSerializers
       ActiveModel::Serializer.serializers_cache.clear
     end
 
-    initializer 'active_model_serializers.action_controller' do
-      ActiveSupport.on_load(:action_controller) do
-        include(::ActionController::Serialization)
-      end
-    end
+    # initializer 'active_model_serializers.action_controller' do
+    #   ActiveSupport.on_load(:action_controller) do
+    #     include(::ActionController::Serialization)
+    #   end
+    # end
 
     initializer 'active_model_serializers.prepare_serialization_context' do
       SerializationContext.url_helpers = Rails.application.routes.url_helpers
