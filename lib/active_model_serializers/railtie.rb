@@ -14,9 +14,13 @@ module ActiveModelSerializers
     end
 
     initializer 'active_model_serializers.action_controller' do
-      ActiveSupport.on_load(:action_controller) do
-        include(::ActionController::Serialization)
-      end
+      # the include below sets this version of the gem as the default json renderer
+      # however we still use an older (and incompatible) version of the gem for app/app controllers
+      # therefore we disable this include and add the related includes as needed in the server repo
+      #
+      # ActiveSupport.on_load(:action_controller) do
+      #   include(::ActionController::Serialization)
+      # end
     end
 
     initializer 'active_model_serializers.prepare_serialization_context' do
